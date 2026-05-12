@@ -86,7 +86,6 @@ async function submitForm(form) {
   }
 }
 
-/* Attach handler to every form with class "mlp-form" */
 document.querySelectorAll('.mlp-form').forEach(form => {
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -94,7 +93,7 @@ document.querySelectorAll('.mlp-form').forEach(form => {
   });
 });
 
-/* ── Gallery filter (no-op visual toggle) ── */
+/* ── Gallery filter ── */
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -106,11 +105,23 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('.nav');
   if (nav) nav.style.background = window.scrollY > 20
-    ? 'rgba(8,8,8,0.99)' : 'rgba(8,8,8,0.96)';
+    ? 'rgba(5,5,5,0.99)' : 'rgba(5,5,5,0.97)';
 });
 
-/* ── Animate on scroll ── */
-const observer = new IntersectionObserver(entries => {
+/* ── Reveal on scroll (.reveal class) ── */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ── Animate cards on older pages (inline style approach) ── */
+const cardObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.style.opacity = '1';
@@ -120,10 +131,37 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll(
-  '.svc-card, .process-step, .review-card, .brand-chip, .price-card, .value-item, .perk-item, .job-card'
+  '.brand-chip, .price-card, .value-item, .perk-item, .job-card'
 ).forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity .5s ease, transform .5s ease';
-  observer.observe(el);
+  if (!el.classList.contains('reveal')) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+    cardObserver.observe(el);
+  }
 });
+
+/* ── Animated Counters ── */
+const counterEls = document.querySelectorAll('[data-count]');
+if (counterEls.length) {
+  const countObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = +el.dataset.count;
+      const suffix = el.dataset.suffix || '';
+      const duration = 1600;
+      const steps = duration / 16;
+      const increment = target / steps;
+      let current = 0;
+      const tick = () => {
+        current = Math.min(current + increment, target);
+        el.textContent = Math.floor(current) + suffix;
+        if (current < target) requestAnimationFrame(tick);
+      };
+      tick();
+      countObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counterEls.forEach(el => countObserver.observe(el));
+}
