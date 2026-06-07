@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Book Now | MotorsLuxe Pro</title>
+<meta name="description" content="Book a professional detailing appointment with MotorsLuxe Pro — automotive, marine, aviation, ATV, motorcycle, and golf cart services."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+/* Pricing summary for each tab */
+.booking-pricing {
+  background: var(--deep);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+.booking-pricing h4 {
+  font-family: 'Cinzel', serif;
+  font-size: .82rem;
+  color: var(--gold);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  padding-bottom: .75rem;
+  border-bottom: 1px solid var(--border);
+}
+.bp-row {
+  display: flex; justify-content: space-between;
+  padding: .45rem 0; border-bottom: 1px solid var(--border);
+  font-size: .8rem;
+}
+.bp-row:last-child { border-bottom: none; }
+.bp-svc { color: var(--silver); }
+.bp-price { color: var(--gold); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.jpg" alt="MotorsLuxe Pro" class="nav-logo-img" onerror="this.style.display='none'"/>
+    <div><div class="nav-logo-name">MotorsLuxe <span class="gold">Pro</span></div><span class="nav-logo-est">Est. 2025</span></div>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-dd">
+      <a href="#" class="nav-link dd-toggle">Professional Care <span class="dd-arrow">▾</span></a>
+      <ul class="dd-menu">
+        <li><a href="automotive.html">Automotive</a></li>
+        <li><a href="marine.html">Marine</a></li>
+        <li><a href="aviation.html">Aviation</a></li>
+        <li><a href="atv.html">ATV</a></li>
+        <li><a href="motorcycles.html">Motorcycles</a></li>
+        <li><a href="golf-cart.html">Golf Carts</a></li>
+      </ul>
+    </li>
+    <li><a href="about.html" class="nav-link">About Us</a></li>
+    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+    <li><a href="careers.html" class="nav-link">Careers</a></li>
+  </ul>
+  <a href="book-now.html" class="btn-nav">Book Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <span class="mn-section">Professional Care</span>
+  <a href="automotive.html" class="mn-sub">Automotive</a>
+  <a href="marine.html" class="mn-sub">Marine</a>
+  <a href="aviation.html" class="mn-sub">Aviation</a>
+  <a href="atv.html" class="mn-sub">ATV</a>
+  <a href="motorcycles.html" class="mn-sub">Motorcycles</a>
+  <a href="golf-cart.html" class="mn-sub">Golf Carts</a>
+  <a href="about.html">About Us</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="careers.html">Careers</a>
+  <a href="book-now.html" class="mn-cta">Book Now</a>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section class="cat-hero">
+  <div class="cat-hero-bg"></div>
+  <div class="cat-hero-inner container">
+    <span class="cat-icon">📅</span>
+    <h1 class="cat-title">Book Your <span class="gold">Detail</span></h1>
+    <p class="cat-sub">Select your vehicle category, review pricing, and request your appointment.</p>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="s-dark">
+  <div class="container">
+
+    <!-- Category Tabs -->
+    <div style="text-align:center;margin-bottom:.5rem;">
+      <div class="section-tag" style="justify-content:center;">Select Your Vehicle Type</div>
+    </div>
+    <div class="booknow-tabs">
+      <button class="tab-btn active" data-tab="tab-auto">🚗 Automotive</button>
+      <button class="tab-btn" data-tab="tab-marine">⛵ Marine</button>
+      <button class="tab-btn" data-tab="tab-aviation">✈️ Aviation</button>
+      <button class="tab-btn" data-tab="tab-atv">🏎️ ATV</button>
+      <button class="tab-btn" data-tab="tab-moto">🏍️ Motorcycles</button>
+      <button class="tab-btn" data-tab="tab-golf">⛳ Golf Carts</button>
+    </div>
+
+    <!-- ── AUTOMOTIVE ── -->
+    <div class="tab-content active" id="tab-auto">
+      <div class="booking-pricing">
+        <h4>🚗 Automotive Pricing</h4>
+        <div class="bp-row"><span class="bp-svc">Basic Exterior (Sedan)</span><span class="bp-price">$150</span></div>
+        <div class="bp-row"><span class="bp-svc">Basic Exterior (SUV/Truck)</span><span class="bp-price">$180</span></div>
+        <div class="bp-row"><span class="bp-svc">Interior Only (Sedan)</span><span class="bp-price">$170</span></div>
+        <div class="bp-row"><span class="bp-svc">Interior Only (SUV/Truck)</span><span class="bp-price">$200</span></div>
+        <div class="bp-row"><span class="bp-svc">Full Interior + Exterior (Sedan)</span><span class="bp-price">$300</span></div>
+        <div class="bp-row"><span class="bp-svc">Full Interior + Exterior (SUV/Truck)</span><span class="bp-price">$350</span></div>
+        <div class="bp-row"><span class="bp-svc">Headlight Restoration</span><span class="bp-price">$100</span></div>
+      </div>
+      <form class="booking-form mlp-form" id="booking-form">
+        <input type="hidden" name="access_key" value="cf4ff0e6-aa55-442e-8684-1fbd5073e53c"/>
+      <input type="hidden" name="replyto" value="motorsluxe@outlook.com"/>
+        <input type="hidden" name="subject" value="New Booking — Automotive Detail · MotorsLuxe Pro"/>
+        <input type="hidden" name="from_name" value="MotorsLuxe Pro Website"/>
+        <div class="form-error">Something went wrong. Please call us at (843) 640-7527.</div>
+        <h3>Schedule Your Automotive Detail</h3>
+        <div class="form-grid">
+          <div class="form-group"><label class="form-label" for="a-fname">First Name</label><input class="form-input" type="text" id="a-fname" placeholder="First name" required/></div>
+          <div class="form-group"><label class="form-label" for="a-lname">Last Name</label><input class="form-input" type="text" id="a-lname" placeholder="Last name" required/></div>
+          <div class="form-group"><label class="form-label" for="a-email">Email</label><input class="form-input" type="email" id="a-email" placeholder="your@email.com" required/></div>
+          <div class="form-group"><label class="form-label" for="a-phone">Phone</label><input class="form-input" type="tel" id="a-phone" placeholder="(843) 000-0000" required/></div>
+          <div class="form-group"><label class="form-label" for="a-vehicle">Vehicle (Make/Model)</label><input class="form-input" type="text" id="a-vehicle" placeholder="e.g. 2023 BMW X5"/></div>
+          <div class="form-group"><label class="form-label" for="a-type">Vehicle Type</label>
+            <select class="form-select" id="a-type">
+              <option>Sedan</option><option>SUV / Truck</option><option>Exotic / Sports Car</option>
+            </select>
+          </div>
+          <div class="form-group full"><label class="form-label" for="a-service">Service Package</label>
+            <select class="form-select" id="a-service">
+              <option>Basic Exterior Detail — Sedan ($150)</option>
+              <option>Basic Exterior Detail — SUV/Truck ($180)</option>
+              <option>Interior Only — Sedan ($170)</option>
+              <option>Interior Only — SUV/Truck ($200)</option>
+              <option>Full Interior + Exterior — Sedan ($300)</option>
+              <option>Full Interior + Exterior — SUV/Truck ($350)</option>
+              <option>Headlight Restoration ($100)</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label" for="a-date">Preferred Date</label><input class="form-input" type="date" id="a-date"/></div>
+          <div class="form-group"><label class="form-label" for="a-time">Preferred Time</label>
+            <select class="form-select" id="a-time">
+              <option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option>
+              <option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option>
+              <option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option>
+            </select>
+          </div>
+          <div class="form-group full"><label class="form-label" for="a-notes">Additional Notes</label><textarea class="form-textarea" id="a-notes" placeholder="Any special requests or vehicle notes…"></textarea></div>
+        </div>
+        <button type="submit" class="btn-gold form-submit">Request Appointment</button>
+      </form>
+    </div>
+
+    <!-- ── MARINE ── -->
+    <div class="tab-content" id="tab-marine">
+      <div class="booking-pricing">
+        <h4>⛵ Marine Pricing</h4>
+        <div class="bp-row"><span class="bp-svc">Basic Marine Detail</span><span class="bp-price">$18 / ft</span></div>
+        <div class="bp-row"><span class="bp-svc">Premium Marine Detail</span><span class="bp-price">$28 / ft</span></div>
+      </div>
+      <form class="booking-form mlp-form">
+        <input type="hidden" name="access_key" value="cf4ff0e6-aa55-442e-8684-1fbd5073e53c"/>
+      <input type="hidden" name="replyto" value="motorsluxe@outlook.com"/>
+        <input type="hidden" name="subject" value="New Booking — Marine Detail · MotorsLuxe Pro"/>
+        <input type="hidden" name="from_name" value="MotorsLuxe Pro Website"/>
+        <div class="form-error">Something went wrong. Please call us at (843) 640-7527.</div>
+        <h3>Schedule Your Marine Detail</h3>
+        <div class="form-grid">
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="First name" required/></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Last name" required/></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="your@email.com" required/></div>
+          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(843) 000-0000" required/></div>
+          <div class="form-group"><label class="form-label">Vessel Make/Model</label><input class="form-input" type="text" placeholder="e.g. Sea Ray 230"/></div>
+          <div class="form-group"><label class="form-label">Vessel Length (ft)</label><input class="form-input" type="number" placeholder="e.g. 22"/></div>
+          <div class="form-group full"><label class="form-label">Service Package</label>
+            <select class="form-select">
+              <option>Basic Marine Detail ($18/ft)</option>
+              <option>Premium Marine Detail ($28/ft)</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label">Preferred Date</label><input class="form-input" type="date"/></div>
+          <div class="form-group"><label class="form-label">Preferred Time</label>
+            <select class="form-select"><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option></select>
+          </div>
+          <div class="form-group full"><label class="form-label">Additional Notes</label><textarea class="form-textarea" placeholder="Marina location, dock number, special requests…"></textarea></div>
+        </div>
+        <button type="submit" class="btn-gold form-submit">Request Appointment</button>
+      </form>
+    </div>
+
+    <!-- ── AVIATION ── -->
+    <div class="tab-content" id="tab-aviation">
+      <div class="booking-pricing">
+        <h4>✈️ Aviation Pricing</h4>
+        <div class="bp-row"><span class="bp-svc">Aircraft Basic Detail (Light Aircraft)</span><span class="bp-price">$400 – $600</span></div>
+        <div class="bp-row"><span class="bp-svc">Jet Full Detail (Interior + Exterior)</span><span class="bp-price">$800 – $1,500</span></div>
+      </div>
+      <form class="booking-form mlp-form">
+        <input type="hidden" name="access_key" value="cf4ff0e6-aa55-442e-8684-1fbd5073e53c"/>
+      <input type="hidden" name="replyto" value="motorsluxe@outlook.com"/>
+        <input type="hidden" name="subject" value="New Booking — Aviation Detail · MotorsLuxe Pro"/>
+        <input type="hidden" name="from_name" value="MotorsLuxe Pro Website"/>
+        <div class="form-error">Something went wrong. Please call us at (843) 640-7527.</div>
+        <h3>Schedule Your Aviation Detail</h3>
+        <div class="form-grid">
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="First name" required/></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Last name" required/></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="your@email.com" required/></div>
+          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(843) 000-0000" required/></div>
+          <div class="form-group"><label class="form-label">Aircraft Make/Model</label><input class="form-input" type="text" placeholder="e.g. Cessna 172"/></div>
+          <div class="form-group"><label class="form-label">Aircraft Type</label>
+            <select class="form-select"><option>Single-Engine Piston</option><option>Turboprop</option><option>Light Jet</option><option>Mid-Size Jet</option><option>Large Jet</option><option>Helicopter</option></select>
+          </div>
+          <div class="form-group full"><label class="form-label">Service Package</label>
+            <select class="form-select"><option>Aircraft Basic Detail ($400-$600)</option><option>Jet Full Detail ($800-$1,500)</option></select>
+          </div>
+          <div class="form-group"><label class="form-label">Hangar / FBO Location</label><input class="form-input" type="text" placeholder="Airport and hangar info"/></div>
+          <div class="form-group"><label class="form-label">Preferred Date</label><input class="form-input" type="date"/></div>
+          <div class="form-group full"><label class="form-label">Additional Notes</label><textarea class="form-textarea" placeholder="Tail number, special access instructions, specific areas of concern…"></textarea></div>
+        </div>
+        <button type="submit" class="btn-gold form-submit">Request Appointment</button>
+      </form>
+    </div>
+
+    <!-- ── ATV ── -->
+    <div class="tab-content" id="tab-atv">
+      <div class="booking-pricing">
+        <h4>🏎️ ATV Pricing</h4>
+        <div class="bp-row"><span class="bp-svc">Full ATV / UTV Detail</span><span class="bp-price">$150 – $250</span></div>
+      </div>
+      <form class="booking-form mlp-form">
+        <input type="hidden" name="access_key" value="cf4ff0e6-aa55-442e-8684-1fbd5073e53c"/>
+      <input type="hidden" name="replyto" value="motorsluxe@outlook.com"/>
+        <input type="hidden" name="subject" value="New Booking — ATV Detail · MotorsLuxe Pro"/>
+        <input type="hidden" name="from_name" value="MotorsLuxe Pro Website"/>
+        <div class="form-error">Something went wrong. Please call us at (843) 640-7527.</div>
+        <h3>Schedule Your ATV Detail</h3>
+        <div class="form-grid">
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="First name" required/></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Last name" required/></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="your@email.com" required/></div>
+          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(843) 000-0000" required/></div>
+          <div class="form-group"><label class="form-label">ATV Make/Model</label><input class="form-input" type="text" placeholder="e.g. Polaris RZR 1000"/></div>
+          <div class="form-group"><label class="form-label">Vehicle Type</label>
+            <select class="form-select"><option>ATV</option><option>Side-by-Side / UTV</option><option>RZR</option><option>Other Off-Road</option></select>
+          </div>
+          <div class="form-group"><label class="form-label">Preferred Date</label><input class="form-input" type="date"/></div>
+          <div class="form-group"><label class="form-label">Preferred Time</label>
+            <select class="form-select"><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select>
+          </div>
+          <div class="form-group full"><label class="form-label">Additional Notes</label><textarea class="form-textarea" placeholder="Current condition, specific areas to focus on…"></textarea></div>
+        </div>
+        <button type="submit" class="btn-gold form-submit">Request Appointment</button>
+      </form>
+    </div>
+
+    <!-- ── MOTORCYCLES ── -->
+    <div class="tab-content" id="tab-moto">
+      <div class="booking-pricing">
+        <h4>🏍️ Motorcycle Pricing</h4>
+        <div class="bp-row"><span class="bp-svc">Full Motorcycle Detail</span><span class="bp-price">$150</span></div>
+      </div>
+      <form class="booking-form mlp-form">
+        <input type="hidden" name="access_key" value="cf4ff0e6-aa55-442e-8684-1fbd5073e53c"/>
+      <input type="hidden" name="replyto" value="motorsluxe@outlook.com"/>
+        <input type="hidden" name="subject" value="New Booking — Motorcycle Detail · MotorsLuxe Pro"/>
+        <input type="hidden" name="from_name" value="MotorsLuxe Pro Website"/>
+        <div class="form-error">Something went wrong. Please call us at (843) 640-7527.</div>
+        <h3>Schedule Your Motorcycle Detail</h3>
+        <div class="form-grid">
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="First name" required/></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Last name" required/></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="your@email.com" required/></div>
+          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(843) 000-0000" required/></div>
+          <div class="form-group"><label class="form-label">Motorcycle Make/Model</label><input class="form-input" type="text" placeholder="e.g. Harley-Davidson Road King"/></div>
+          <div class="form-group"><label class="form-label">Motorcycle Style</label>
+            <select class="form-select"><option>Cruiser</option><option>Sport Bike</option><option>Touring</option><option>Adventure</option><option>Chopper</option><option>Other</option></select>
+          </div>
+          <div class="form-group"><label class="form-label">Preferred Date</label><input class="form-input" type="date"/></div>
+          <div class="form-group"><label class="form-label">Preferred Time</label>
+            <select class="form-select"><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select>
+          </div>
+          <div class="form-group full"><label class="form-label">Additional Notes</label><textarea class="form-textarea" placeholder="Any special areas of focus or custom parts to be careful with…"></textarea></div>
+        </div>
+        <button type="submit" class="btn-gold form-submit">Request Appointment</button>
+      </form>
+    </div>
+
+    <!-- ── GOLF CART ── -->
+    <div class="tab-content" id="tab-golf">
+      <div class="booking-pricing">
+        <h4>⛳ Golf Cart Pricing</h4>
+        <div class="bp-row"><span class="bp-svc">Full Golf Cart Detail</span><span class="bp-price">$125 – $200</span></div>
+      </div>
+      <form class="booking-form mlp-form">
+        <input type="hidden" name="access_key" value="cf4ff0e6-aa55-442e-8684-1fbd5073e53c"/>
+      <input type="hidden" name="replyto" value="motorsluxe@outlook.com"/>
+        <input type="hidden" name="subject" value="New Booking — Golf Cart Detail · MotorsLuxe Pro"/>
+        <input type="hidden" name="from_name" value="MotorsLuxe Pro Website"/>
+        <div class="form-error">Something went wrong. Please call us at (843) 640-7527.</div>
+        <h3>Schedule Your Golf Cart Detail</h3>
+        <div class="form-grid">
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="First name" required/></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Last name" required/></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="your@email.com" required/></div>
+          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(843) 000-0000" required/></div>
+          <div class="form-group"><label class="form-label">Cart Make/Model</label><input class="form-input" type="text" placeholder="e.g. Club Car Onward"/></div>
+          <div class="form-group"><label class="form-label">Cart Type</label>
+            <select class="form-select"><option>Electric</option><option>Gas</option><option>Custom Build</option><option>LSV</option></select>
+          </div>
+          <div class="form-group"><label class="form-label">Preferred Date</label><input class="form-input" type="date"/></div>
+          <div class="form-group"><label class="form-label">Preferred Time</label>
+            <select class="form-select"><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select>
+          </div>
+          <div class="form-group full"><label class="form-label">Additional Notes</label><textarea class="form-textarea" placeholder="Custom accessories, specific areas of focus…"></textarea></div>
+        </div>
+        <button type="submit" class="btn-gold form-submit">Request Appointment</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT ALTERNATIVE -->
+<section class="contact-banner">
+  <div class="container">
+    <div class="section-tag">Prefer to Call?</div>
+    <h2 class="section-title">Reach Us <span class="gold">Directly</span></h2>
+    <p style="color:var(--silver);">Call or text during business hours and we'll get you scheduled right away.</p>
+    <a href="tel:+18436407527" class="contact-phone">(843) 640-7527</a>
+    <p style="color:var(--muted);font-size:.8rem;">Monday – Saturday &nbsp;·&nbsp; 8:00 AM – 6:00 PM</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="images/logo.jpg" alt="MotorsLuxe Pro" class="footer-logo-img" onerror="this.style.display='none'"/>
+        <div class="footer-brand-name">MotorsLuxe Pro</div>
+        <p class="footer-tagline">Premium detailing for premium vehicles. Est. 2025.</p>
+        <div class="social-row">
+          <a href="https://www.tiktok.com/@motorsluxepro" class="social-link" aria-label="TikTok" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.99a8.22 8.22 0 004.85 1.56V7.09a4.85 4.85 0 01-1.08-.4z"/></svg></a>
+          <a href="https://www.instagram.com/motorsluxepro" class="social-link" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="https://www.facebook.com/motorsluxepro" class="social-link" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="https://www.youtube.com/@MotorsLuxe-Pro" class="social-link" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Professional Care</h4><ul><li><a href="automotive.html">Automotive</a></li><li><a href="marine.html">Marine</a></li><li><a href="aviation.html">Aviation</a></li><li><a href="atv.html">ATV</a></li><li><a href="motorcycles.html">Motorcycles</a></li><li><a href="golf-cart.html">Golf Carts</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="careers.html">Careers</a></li><li><a href="book-now.html">Book Now</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><p><a href="tel:+18436407527">(843) 640-7527</a></p><p style="margin-top:.5rem;">Mon – Sat · 8AM – 6PM</p></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2025 MotorsLuxe Pro. All rights reserved.</span><span>HCN Holdings</span></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
