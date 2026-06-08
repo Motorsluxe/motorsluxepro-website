@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Client Portal | MotorsLuxe Pro</title>
+<meta name="description" content="MotorsLuxe Pro client portal — view your service history and manage your account."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+  /* ── Members Page ── */
+  .portal-hero {
+    min-height: calc(100vh - 76px);
+    display: flex; align-items: center;
+    background: var(--black); position: relative; overflow: hidden;
+  }
+  .portal-hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 70% at 50% 50%, rgba(201,168,76,.055) 0%, transparent 65%);
+  }
+  .portal-grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,.028) 1px, transparent 1px);
+    background-size: 65px 65px;
+  }
+  .portal-inner {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 5rem;
+    width: 100%; max-width: 1100px;
+    margin: 0 auto; padding: 4rem 2rem;
+  }
+  .portal-info h1 {
+    font-family: 'Cinzel',serif; font-size: clamp(2rem,4vw,3rem);
+    line-height: 1.05; margin-bottom: 1.2rem;
+  }
+  .portal-info p {
+    font-size: .9rem; color: var(--silver); line-height: 1.85; margin-bottom: 1.2rem;
+  }
+  .portal-features { list-style: none; margin-bottom: 2rem; }
+  .portal-features li {
+    display: flex; align-items: center; gap: .75rem;
+    font-size: .82rem; color: var(--silver); padding: .45rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .portal-features li:last-child { border-bottom: none; }
+  .portal-features .feat-icon {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--gold-glow); border: 1px solid var(--border-s);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .85rem; flex-shrink: 0;
+  }
+  .portal-box {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: var(--r); padding: 2.5rem;
+  }
+  .portal-box h2 {
+    font-family: 'Cinzel',serif; font-size: 1rem;
+    color: var(--white); margin-bottom: 1.75rem;
+    padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+  }
+  .portal-tabs {
+    display: flex; gap: 0; margin-bottom: 1.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .portal-tab {
+    background: none; border: none; cursor: pointer;
+    font-family: 'Jost',sans-serif; font-size: .7rem;
+    font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--muted); padding: .6rem 1.2rem;
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+    transition: color .2s, border-color .2s;
+  }
+  .portal-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .portal-tab-content { display: none; }
+  .portal-tab-content.active { display: block; }
+  .payment-methods {
+    display: flex; gap: .75rem; flex-wrap: wrap; margin: 1.5rem 0;
+  }
+  .pay-badge {
+    display: flex; align-items: center; gap: .5rem;
+    background: var(--dark); border: 1px solid var(--border);
+    border-radius: var(--r); padding: .5rem 1rem;
+    font-size: .75rem; font-weight: 600; color: var(--silver);
+  }
+  .pay-badge svg { width: 20px; height: 20px; }
+  .pay-badge.apple { color: var(--white); }
+  .pay-badge.visa  { color: #1A1F71; background: #fff; }
+  .pay-badge.mc    { color: var(--white); background: #EB001B; }
+  .coming-soon-badge {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: rgba(201,168,76,.1); border: 1px solid var(--border-s);
+    color: var(--gold); font-size: .6rem; font-weight: 700;
+    letter-spacing: .3em; text-transform: uppercase;
+    padding: .3rem .8rem; border-radius: 2px; margin-bottom: 1.2rem;
+  }
+  .portal-divider {
+    border: none; border-top: 1px solid var(--border);
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 900px) {
+    .portal-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.jpg" alt="MotorsLuxe Pro" class="nav-logo-img" onerror="this.style.display='none'"/>
+    <div><div class="nav-logo-name">MotorsLuxe <span class="gold">Pro</span></div><span class="nav-logo-est">Est. 2025</span></div>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-dd">
+      <a href="#" class="nav-link dd-toggle">Professional Care <span class="dd-arrow">▾</span></a>
+      <ul class="dd-menu">
+        <li><a href="automotive.html">Automotive</a></li>
+        <li><a href="marine.html">Marine</a></li>
+        <li><a href="aviation.html">Aviation</a></li>
+        <li><a href="atv.html">ATV</a></li>
+        <li><a href="motorcycles.html">Motorcycles</a></li>
+        <li><a href="golf-cart.html">Golf Carts</a></li>
+      </ul>
+    </li>
+    <li><a href="about.html" class="nav-link">About Us</a></li>
+    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+    <li><a href="careers.html" class="nav-link">Careers</a></li>
+  </ul>
+  <a href="book-now.html" class="btn-nav">Book Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <span class="mn-section">Professional Care</span>
+  <a href="automotive.html" class="mn-sub">Automotive</a>
+  <a href="marine.html" class="mn-sub">Marine</a>
+  <a href="aviation.html" class="mn-sub">Aviation</a>
+  <a href="atv.html" class="mn-sub">ATV</a>
+  <a href="motorcycles.html" class="mn-sub">Motorcycles</a>
+  <a href="golf-cart.html" class="mn-sub">Golf Carts</a>
+  <a href="about.html">About Us</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="careers.html">Careers</a>
+  <a href="book-now.html" class="mn-cta">Book Now</a>
+</div>
+
+<main>
+
+<section class="portal-hero">
+  <div class="portal-hero-bg"></div>
+  <div class="portal-grid-bg"></div>
+  <div class="portal-inner">
+
+    <!-- Left: info -->
+    <div class="portal-info">
+      <div class="eyebrow" style="margin-bottom:1.2rem;">Client Portal</div>
+      <h1>Your <span class="gold">MotorsLuxe</span><br>Member Account</h1>
+      <p>Access your full service history, upcoming appointments, and make secure payments — all in one place.</p>
+
+      <ul class="portal-features">
+        <li><span class="feat-icon">🚗</span> View all your vehicles and past services</li>
+        <li><span class="feat-icon">📅</span> Track upcoming appointments</li>
+        <li><span class="feat-icon">📸</span> Before &amp; after photos from every detail</li>
+        <li><span class="feat-icon">💳</span> Pay invoices with Apple Pay, Visa, or Mastercard</li>
+        <li><span class="feat-icon">⭐</span> Leave reviews and track loyalty rewards</li>
+      </ul>
+
+      <p style="font-size:.8rem;color:var(--muted);">Don't have an account yet? Request access below and we'll set you up within 24 hours.</p>
+
+      <div class="payment-methods">
+        <div class="pay-badge apple">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.15-2.2 1.28-2.18 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.77M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Apple Pay
+        </div>
+        <div class="pay-badge visa">
+          <svg viewBox="0 0 24 24" fill="#1A1F71"><path d="M9.112 8.262L5.97 15.758H3.92L2.374 9.775c-.094-.368-.176-.503-.462-.658C1.447 8.864.677 8.627 0 8.479l.046-.217h3.3c.42 0 .798.28.893.763l.815 4.332 2.013-5.095zm8.033 5.01c.008-1.975-2.73-2.084-2.711-2.965.006-.268.261-.554.82-.627.277-.036 1.04-.064 1.905.335l.34-1.588A5.2 5.2 0 0016.103 8c-1.929 0-3.286 1.025-3.298 2.492-.013 1.084.968 1.689 1.707 2.05.76.368 1.014.604 1.011.933-.005.504-.605.727-1.165.736-.977.015-1.544-.264-1.995-.474l-.352 1.643c.454.208 1.29.39 2.156.398 2.037 0 3.368-1.006 3.375-2.565zm5.07 2.486H24l-1.617-7.496h-1.71a.88.88 0 00-.823.547L17.039 15.758h2.035l.404-1.12h2.487zm-2.165-2.659l1.02-2.814.587 2.814zm-8.147-4.837l-1.603 7.496H8.38l1.604-7.496z"/></svg>
+          Visa
+        </div>
+        <div class="pay-badge mc">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.343 18.031c.058.049.12.098.181.146-1.177.783-2.59 1.238-4.107 1.238C3.32 19.415 0 16.047 0 11.862S3.32 4.31 7.417 4.31c1.517 0 2.93.455 4.107 1.238-.061.049-.123.098-.181.146C9.604 6.969 8.48 9.296 8.48 11.862s1.124 4.894 2.863 6.169zm1.314 0c1.739-1.275 2.863-3.602 2.863-6.169s-1.124-4.894-2.863-6.169c-1.739 1.275-2.863 3.602-2.863 6.169s1.124 4.894 2.863 6.169zM16.583 4.31c-1.517 0-2.93.455-4.107 1.238.061.049.122.098.181.146C14.396 6.969 15.52 9.296 15.52 11.862s-1.124 4.894-2.863 6.169c-.059.049-.12.098-.181.146 1.177.783 2.59 1.238 4.107 1.238C20.68 19.415 24 16.047 24 11.862S20.68 4.31 16.583 4.31z"/></svg>
+          Mastercard
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Login / Request Access box -->
+    <div class="portal-box">
+      <div class="coming-soon-badge">
+        <span>●</span> Portal Launching Soon
+      </div>
+
+      <div class="portal-tabs">
+        <button class="portal-tab active" onclick="switchTab('login')">Sign In</button>
+        <button class="portal-tab" onclick="switchTab('request')">Request Access</button>
+      </div>
+
+      <!-- Login tab -->
+      <div class="portal-tab-content active" id="tab-login">
+        <p style="font-size:.82rem;color:var(--silver);margin-bottom:1.5rem;line-height:1.8;">
+          The member portal is <strong style="color:var(--gold);">coming soon</strong>. In the meantime, contact us directly for your service history and invoices.
+        </p>
+        <div class="form-group" style="margin-bottom:1rem;">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" type="email" placeholder="your@email.com" disabled style="opacity:.5;cursor:not-allowed;"/>
+        </div>
+        <div class="form-group" style="margin-bottom:1.5rem;">
+          <label class="form-label">Password</label>
+          <input class="form-input" type="password" placeholder="••••••••" disabled style="opacity:.5;cursor:not-allowed;"/>
+        </div>
+        <button class="btn-gold" style="width:100%;justify-content:center;opacity:.5;cursor:not-allowed;" disabled>Sign In — Coming Soon</button>
+        <hr class="portal-divider"/>
+        <p style="text-align:center;font-size:.78rem;color:var(--muted);">
+          Need service records now? Call us at <a href="tel:+18436407527" style="color:var(--gold);">(843) 640-7527</a><br>
+          or email <a href="mailto:motorsluxe@outlook.com" style="color:var(--gold);">motorsluxe@outlook.com</a>
+        </p>
+      </div>
+
+      <!-- Request access tab -->
+      <div class="portal-tab-content" id="tab-request">
+        <p style="font-size:.82rem;color:var(--silver);margin-bottom:1.5rem;line-height:1.8;">
+          Request early access to the client portal. We'll set up your account and notify you by email.
+        </p>
+        <form class="mlp-form" id="portal-request-form">
+          <input type="hidden" name="access_key" value="cf4ff0e6-aa55-442e-8684-1fbd5073e53c"/>
+          <input type="hidden" name="replyto" value="motorsluxe@outlook.com"/>
+          <input type="hidden" name="subject" value="Client Portal Access Request · MotorsLuxe Pro"/>
+          <input type="hidden" name="from_name" value="MotorsLuxe Pro Portal"/>
+          <div class="form-error">Something went wrong. Please email motorsluxe@outlook.com directly.</div>
+          <div class="form-group" style="margin-bottom:1rem;">
+            <label class="form-label">Full Name</label>
+            <input class="form-input" type="text" name="name" placeholder="Your full name" required/>
+          </div>
+          <div class="form-group" style="margin-bottom:1rem;">
+            <label class="form-label">Email Address</label>
+            <input class="form-input" type="email" name="email" placeholder="your@email.com" required/>
+          </div>
+          <div class="form-group" style="margin-bottom:1rem;">
+            <label class="form-label">Phone Number</label>
+            <input class="form-input" type="tel" name="phone" placeholder="(843) 000-0000"/>
+          </div>
+          <div class="form-group" style="margin-bottom:1.5rem;">
+            <label class="form-label">Vehicle(s) You Own</label>
+            <input class="form-input" type="text" name="vehicles" placeholder="e.g. 2023 Porsche 911, 2022 Sea Ray 23"/>
+          </div>
+          <button type="submit" class="btn-gold" style="width:100%;justify-content:center;">Request Portal Access</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PAYMENTS INFO -->
+<section class="s-carbon">
+  <div class="container">
+    <div class="eyebrow" style="justify-content:center;">Secure Payments</div>
+    <h2 class="section-title" style="text-align:center;margin-bottom:1rem;">How to <span class="gold">Pay</span></h2>
+    <p class="section-sub" style="text-align:center;margin:0 auto 3.5rem;">Until the member portal launches, we accept the following payment methods for all services.</p>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <div class="why-icon-wrap">
+          <svg viewBox="0 0 24 24" width="28" fill="var(--gold)"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.15-2.2 1.28-2.18 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.77M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        </div>
+        <div class="why-title">Apple Pay</div>
+        <p class="why-desc">Pay securely from your iPhone or Mac using Apple Pay. Fast, private, and frictionless.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-icon-wrap">
+          <svg viewBox="0 0 24 24" width="28" fill="var(--gold)"><path d="M9.112 8.262L5.97 15.758H3.92L2.374 9.775c-.094-.368-.176-.503-.462-.658C1.447 8.864.677 8.627 0 8.479l.046-.217h3.3c.42 0 .798.28.893.763l.815 4.332 2.013-5.095zm8.033 5.01c.008-1.975-2.73-2.084-2.711-2.965.006-.268.261-.554.82-.627.277-.036 1.04-.064 1.905.335l.34-1.588A5.2 5.2 0 0016.103 8c-1.929 0-3.286 1.025-3.298 2.492-.013 1.084.968 1.689 1.707 2.05.76.368 1.014.604 1.011.933-.005.504-.605.727-1.165.736-.977.015-1.544-.264-1.995-.474l-.352 1.643c.454.208 1.29.39 2.156.398 2.037 0 3.368-1.006 3.375-2.565zm5.07 2.486H24l-1.617-7.496h-1.71a.88.88 0 00-.823.547L17.039 15.758h2.035l.404-1.12h2.487zm-2.165-2.659l1.02-2.814.587 2.814zm-8.147-4.837l-1.603 7.496H8.38l1.604-7.496z"/></svg>
+        </div>
+        <div class="why-title">Visa</div>
+        <p class="why-desc">All major Visa cards accepted — credit and debit. Processed securely via our payment terminal.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-icon-wrap">
+          <svg viewBox="0 0 24 24" width="28" fill="var(--gold)"><path d="M11.343 18.031c-1.739-1.275-2.863-3.602-2.863-6.169s1.124-4.894 2.863-6.169c-1.177-.783-2.59-1.238-4.107-1.238C3.32 4.455 0 7.823 0 12s3.32 7.545 7.236 7.545c1.517 0 2.93-.455 4.107-1.238zm2.627 0c1.739-1.275 2.863-3.602 2.863-6.169s-1.124-4.894-2.863-6.169c-1.739 1.275-2.863 3.602-2.863 6.169s1.124 4.894 2.863 6.169zM16.764 4.455c-1.517 0-2.93.455-4.107 1.238 1.739 1.275 2.863 3.602 2.863 6.169s-1.124 4.894-2.863 6.169c1.177.783 2.59 1.238 4.107 1.238C20.68 19.545 24 16.177 24 12s-3.32-7.545-7.236-7.545z"/></svg>
+        </div>
+        <div class="why-title">Mastercard</div>
+        <p class="why-desc">Mastercard credit and debit accepted. We keep your information completely safe.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-icon-wrap"><span style="font-size:1.4rem;">📧</span></div>
+        <div class="why-title">Invoice by Email</div>
+        <p class="why-desc">We can send you a secure payment link by email after your service is complete — no portal needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="contact-banner">
+  <div class="container">
+    <div class="eyebrow" style="justify-content:center;">Questions?</div>
+    <h2 class="section-title" style="text-align:center;margin-top:.5rem;">We're Here to <span class="gold">Help</span></h2>
+    <p style="color:var(--silver);max-width:480px;margin:.75rem auto 0;font-size:.9rem;line-height:1.85;">
+      Contact us by phone or email for your service records, invoices, or to set up your member account.
+    </p>
+    <a href="tel:+18436407527" class="contact-phone">(843) 640-7527</a>
+    <a href="mailto:motorsluxe@outlook.com" class="btn-ghost">motorsluxe@outlook.com</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="images/logo.jpg" alt="MotorsLuxe Pro" class="footer-logo-img" onerror="this.style.display='none'"/>
+        <div class="footer-brand-name">MotorsLuxe <span>Pro</span></div>
+        <p class="footer-tagline">Premium detailing for premium vehicles.<br>Est. 2025 · Lowcountry, SC</p>
+        <div class="social-row">
+          <a href="https://www.tiktok.com/@motorsluxepro" class="social-link" aria-label="TikTok" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.99a8.22 8.22 0 004.85 1.56V7.09a4.85 4.85 0 01-1.08-.4z"/></svg></a>
+          <a href="https://www.instagram.com/motorsluxepro" class="social-link" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="https://www.facebook.com/motorsluxepro" class="social-link" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="https://www.youtube.com/@MotorsLuxe-Pro" class="social-link" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Professional Care</h4><ul><li><a href="automotive.html">Automotive</a></li><li><a href="marine.html">Marine</a></li><li><a href="aviation.html">Aviation</a></li><li><a href="atv.html">ATV</a></li><li><a href="motorcycles.html">Motorcycles</a></li><li><a href="golf-cart.html">Golf Carts</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="careers.html">Careers</a></li><li><a href="book-now.html">Book Now</a></li><li><a href="members.html">Client Portal</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><p><a href="tel:+18436407527">(843) 640-7527</a></p><p style="margin-top:.5rem;"><a href="mailto:motorsluxe@outlook.com">motorsluxe@outlook.com</a></p><p style="margin-top:.4rem;">Mon – Sat · 8AM – 6PM</p></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2025 MotorsLuxe Pro. All rights reserved.</span><span>HCN Holdings</span></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+function switchTab(tab) {
+  document.querySelectorAll('.portal-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.portal-tab-content').forEach(c => c.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+</script>
+</body>
+</html>

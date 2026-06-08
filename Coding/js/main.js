@@ -53,6 +53,51 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
+/* ── ICS Calendar Generator ── */
+function buildICS(name, dateStr, timeStr, service) {
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  const timeMap = {
+    '8:00 AM': 8, '9:00 AM': 9, '10:00 AM': 10, '11:00 AM': 11,
+    '12:00 PM': 12, '1:00 PM': 13, '2:00 PM': 14, '3:00 PM': 15,
+    '4:00 PM': 16
+  };
+  const hour = timeMap[timeStr] || 9;
+
+  let dtStart = '', dtEnd = '';
+  if (dateStr) {
+    const [y, m, d] = dateStr.split('-');
+    dtStart = `${y}${m}${d}T${pad(hour)}0000`;
+    dtEnd   = `${y}${m}${d}T${pad(hour + 2)}0000`;
+  } else {
+    const now = new Date();
+    const y = now.getFullYear();
+    const m = pad(now.getMonth() + 1);
+    const d = pad(now.getDate());
+    dtStart = `${y}${m}${d}T090000`;
+    dtEnd   = `${y}${m}${d}T110000`;
+  }
+
+  const ics = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//MotorsLuxe Pro//Appointment//EN',
+    'BEGIN:VEVENT',
+    `DTSTART:${dtStart}`,
+    `DTEND:${dtEnd}`,
+    `SUMMARY:MotorsLuxe Pro — ${service || 'Detail Appointment'}`,
+    `DESCRIPTION:Appointment for ${name}\\nMotorsLuxe Pro — Premium Detailing\\nLowcountry\\, SC\\n(843) 640-7527`,
+    'LOCATION:Lowcountry\\, SC',
+    'ORGANIZER;CN=MotorsLuxe Pro:mailto:motorsluxe@outlook.com',
+    'STATUS:TENTATIVE',
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\r\n');
+
+  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+  return URL.createObjectURL(blob);
+}
+
 /* ── Web3Forms Submission ── */
 async function submitForm(form) {
   const btn = form.querySelector('[type="submit"]');
@@ -60,20 +105,39 @@ async function submitForm(form) {
   btn.textContent = 'Sending…';
   btn.disabled = true;
 
+  // Capture values before clearing
+  const fd    = new FormData(form);
+  const name  = (fd.get('fname') || '') + ' ' + (fd.get('lname') || '');
+  const dateEl    = form.querySelector('[type="date"]');
+  const timeEl    = form.querySelector('select[id$="-time"], select:not([id*="vehicle"]):not([id*="type"]):not([id*="service"]):not([id*="position"])');
+  const serviceEl = form.querySelector('select[id$="-service"]') || form.querySelector('select[id*="service"]');
+  const dateStr   = dateEl ? dateEl.value : '';
+  const timeStr   = timeEl ? timeEl.value : '9:00 AM';
+  const service   = serviceEl ? serviceEl.value : '';
+
   try {
     const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      body: new FormData(form)
+      body: fd
     });
     const data = await res.json();
 
     if (data.success) {
+      const icsUrl  = buildICS(name.trim(), dateStr, timeStr, service);
+      const dateDisplay = dateStr
+        ? new Date(dateStr + 'T12:00:00').toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' })
+        : 'TBD — we will confirm within 24 hours';
+
       form.innerHTML = `
         <div class="form-success">
           <div class="form-success-icon">✓</div>
           <h3>Request Received!</h3>
-          <p>Thank you — we'll contact you within <strong>24 hours</strong> to confirm your appointment.</p>
-          <p>For immediate assistance call <a href="tel:+18436407527">(843) 640-7527</a></p>
+          <p>Thank you${name.trim() ? ', <strong>' + name.trim() + '</strong>' : ''} — your appointment request has been sent to <strong>MotorsLuxe Pro</strong>.</p>
+          <p>Requested date: <strong>${dateDisplay}</strong></p>
+          <p>We'll confirm within <strong>24 hours</strong>. For immediate help call <a href="tel:+18436407527">(843) 640-7527</a></p>
+          ${dateStr ? `<a href="${icsUrl}" download="motorsluxepro-appointment.ics" class="btn-gold" style="margin-top:1.5rem;display:inline-flex;">
+            📅 Add to Outlook / Apple Calendar
+          </a>` : ''}
         </div>`;
     } else {
       throw new Error(data.message || 'Submission failed');
@@ -150,8 +214,7 @@ if (counterEls.length) {
       const el = entry.target;
       const target = +el.dataset.count;
       const suffix = el.dataset.suffix || '';
-      const duration = 1600;
-      const steps = duration / 16;
+      const steps = 1600 / 16;
       const increment = target / steps;
       let current = 0;
       const tick = () => {
