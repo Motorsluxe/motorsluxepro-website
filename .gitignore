@@ -1,3 +1,9 @@
 .DS_Store
 Thumbs.db
 *.log
+
+# Large video/image folders — upload these directly to Hostinger File Manager
+Videos/
+Images/
+Coding.zip
+Coding/
