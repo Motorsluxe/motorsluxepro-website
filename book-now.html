@@ -42,7 +42,7 @@
 
 <nav class="nav">
   <a href="index.html" class="nav-logo">
-    <img src="images/logo.jpg" alt="MotorsLuxe Pro" class="nav-logo-img" onerror="this.style.display='none'"/>
+    <img src="images/logo.svg" alt="MotorsLuxe Pro" class="nav-logo-img" onerror="this.style.display='none'"/>
     <div><div class="nav-logo-name">MotorsLuxe <span class="gold">Pro</span></div><span class="nav-logo-est">Est. 2025</span></div>
   </a>
   <ul class="nav-links">
@@ -60,7 +60,7 @@
     <li><a href="about.html" class="nav-link">About Us</a></li>
     <li><a href="gallery.html" class="nav-link">Gallery</a></li>
     <li><a href="careers.html" class="nav-link">Careers</a></li>
-    <li><a href="members.html" class="nav-link">Client Portal</a></li>
+    <li><a href="members.html" class="nav-link">Payments</a></li>
   </ul>
   <a href="book-now.html" class="btn-nav">Book Now</a>
   <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
@@ -76,7 +76,7 @@
   <a href="about.html">About Us</a>
   <a href="gallery.html">Gallery</a>
   <a href="careers.html">Careers</a>
-  <a href="members.html">Client Portal</a>
+  <a href="members.html">Payments</a>
   <a href="book-now.html" class="mn-cta">Book Now</a>
 </div>
 
@@ -129,18 +129,18 @@
         <div class="form-error">Something went wrong. Please call us at (843) 640-7527.</div>
         <h3>Schedule Your Automotive Detail</h3>
         <div class="form-grid">
-          <div class="form-group"><label class="form-label" for="a-fname">First Name</label><input class="form-input" type="text" id="a-fname" placeholder="First name" required/></div>
-          <div class="form-group"><label class="form-label" for="a-lname">Last Name</label><input class="form-input" type="text" id="a-lname" placeholder="Last name" required/></div>
-          <div class="form-group"><label class="form-label" for="a-email">Email</label><input class="form-input" type="email" id="a-email" placeholder="your@email.com" required/></div>
-          <div class="form-group"><label class="form-label" for="a-phone">Phone</label><input class="form-input" type="tel" id="a-phone" placeholder="(843) 000-0000" required/></div>
-          <div class="form-group"><label class="form-label" for="a-vehicle">Vehicle (Make/Model)</label><input class="form-input" type="text" id="a-vehicle" placeholder="e.g. 2023 BMW X5"/></div>
+          <div class="form-group"><label class="form-label" for="a-fname">First Name</label><input class="form-input" type="text" id="a-fname" name="fname" placeholder="First name" required/></div>
+          <div class="form-group"><label class="form-label" for="a-lname">Last Name</label><input class="form-input" type="text" id="a-lname" name="lname" placeholder="Last name" required/></div>
+          <div class="form-group"><label class="form-label" for="a-email">Email</label><input class="form-input" type="email" id="a-email" name="email" placeholder="your@email.com" required/></div>
+          <div class="form-group"><label class="form-label" for="a-phone">Phone</label><input class="form-input" type="tel" id="a-phone" name="phone" placeholder="(843) 000-0000" required/></div>
+          <div class="form-group"><label class="form-label" for="a-vehicle">Vehicle (Make/Model)</label><input class="form-input" type="text" id="a-vehicle" name="vehicle" placeholder="e.g. 2023 BMW X5"/></div>
           <div class="form-group"><label class="form-label" for="a-type">Vehicle Type</label>
-            <select class="form-select" id="a-type">
+            <select class="form-select" id="a-type" name="vehicle_type">
               <option>Sedan</option><option>SUV / Truck</option><option>Exotic / Sports Car</option>
             </select>
           </div>
           <div class="form-group full"><label class="form-label" for="a-service">Service Package</label>
-            <select class="form-select" id="a-service">
+            <select class="form-select" id="a-service" name="service">
               <option>Basic Exterior Detail — Sedan ($150)</option>
               <option>Basic Exterior Detail — SUV/Truck ($180)</option>
               <option>Interior Only — Sedan ($170)</option>
@@ -150,15 +150,15 @@
               <option>Headlight Restoration ($100)</option>
             </select>
           </div>
-          <div class="form-group"><label class="form-label" for="a-date">Preferred Date</label><input class="form-input" type="date" id="a-date"/></div>
+          <div class="form-group"><label class="form-label" for="a-date">Preferred Date</label><input class="form-input" type="date" id="a-date" name="preferred_date"/></div>
           <div class="form-group"><label class="form-label" for="a-time">Preferred Time</label>
-            <select class="form-select" id="a-time">
+            <select class="form-select" id="a-time" name="preferred_time">
               <option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option>
               <option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option>
               <option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option>
             </select>
           </div>
-          <div class="form-group full"><label class="form-label" for="a-notes">Additional Notes</label><textarea class="form-textarea" id="a-notes" placeholder="Any special requests or vehicle notes…"></textarea></div>
+          <div class="form-group full"><label class="form-label" for="a-notes">Additional Notes</label><textarea class="form-textarea" id="a-notes" name="notes" placeholder="Any special requests or vehicle notes…"></textarea></div>
           <div class="form-group full">
             <label class="form-label">Upload Photos of Your Vehicle <span style="color:var(--muted);font-weight:400;">(Optional)</span></label>
             <input class="form-input" type="file" name="attachment" accept="image/*,video/mp4" multiple style="padding:.55rem 1rem;cursor:pointer;"/>
@@ -184,23 +184,23 @@
         <div class="form-error">Something went wrong. Please call us at (843) 640-7527.</div>
         <h3>Schedule Your Marine Detail</h3>
         <div class="form-grid">
-          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="First name" required/></div>
-          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Last name" required/></div>
-          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="your@email.com" required/></div>
-          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(843) 000-0000" required/></div>
-          <div class="form-group"><label class="form-label">Vessel Make/Model</label><input class="form-input" type="text" placeholder="e.g. Sea Ray 230"/></div>
-          <div class="form-group"><label class="form-label">Vessel Length (ft)</label><input class="form-input" type="number" placeholder="e.g. 22"/></div>
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" name="fname" placeholder="First name" required/></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" name="lname" placeholder="Last name" required/></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" name="email" placeholder="your@email.com" required/></div>
+          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" name="phone" placeholder="(843) 000-0000" required/></div>
+          <div class="form-group"><label class="form-label">Vessel Make/Model</label><input class="form-input" type="text" name="vehicle" placeholder="e.g. Sea Ray 230"/></div>
+          <div class="form-group"><label class="form-label">Vessel Length (ft)</label><input class="form-input" type="number" name="vessel_length" placeholder="e.g. 22"/></div>
           <div class="form-group full"><label class="form-label">Service Package</label>
             <select class="form-select">
               <option>Basic Marine Detail ($18/ft)</option>
               <option>Premium Marine Detail ($28/ft)</option>
             </select>
           </div>
-          <div class="form-group"><label class="form-label">Preferred Date</label><input class="form-input" type="date"/></div>
+          <div class="form-group"><label class="form-label">Preferred Date</label><input class="form-input" type="date" name="preferred_date"/></div>
           <div class="form-group"><label class="form-label">Preferred Time</label>
-            <select class="form-select"><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option></select>
+            <select class="form-select" name="preferred_time"><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option></select>
           </div>
-          <div class="form-group full"><label class="form-label">Additional Notes</label><textarea class="form-textarea" placeholder="Marina location, dock number, special requests…"></textarea></div>
+          <div class="form-group full"><label class="form-label">Additional Notes</label><textarea class="form-textarea" name="notes" placeholder="Marina location, dock number, special requests…"></textarea></div>
           <div class="form-group full">
             <label class="form-label">Upload Photos of Your Vehicle <span style="color:var(--muted);font-weight:400;">(Optional)</span></label>
             <input class="form-input" type="file" name="attachment" accept="image/*,video/mp4" multiple style="padding:.55rem 1rem;cursor:pointer;"/>
@@ -226,20 +226,20 @@
         <div class="form-error">Something went wrong. Please call us at (843) 640-7527.</div>
         <h3>Schedule Your Aviation Detail</h3>
         <div class="form-grid">
-          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="First name" required/></div>
-          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Last name" required/></div>
-          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="your@email.com" required/></div>
-          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(843) 000-0000" required/></div>
-          <div class="form-group"><label class="form-label">Aircraft Make/Model</label><input class="form-input" type="text" placeholder="e.g. Cessna 172"/></div>
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" name="fname" placeholder="First name" required/></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" name="lname" placeholder="Last name" required/></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" name="email" placeholder="your@email.com" required/></div>
+          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" name="phone" placeholder="(843) 000-0000" required/></div>
+          <div class="form-group"><label class="form-label">Aircraft Make/Model</label><input class="form-input" type="text" name="vehicle" placeholder="e.g. Cessna 172"/></div>
           <div class="form-group"><label class="form-label">Aircraft Type</label>
-            <select class="form-select"><option>Single-Engine Piston</option><option>Turboprop</option><option>Light Jet</option><option>Mid-Size Jet</option><option>Large Jet</option><option>Helicopter</option></select>
+            <select class="form-select" name="vehicle_type"><option>Single-Engine Piston</option><option>Turboprop</option><option>Light Jet</option><option>Mid-Size Jet</option><option>Large Jet</option><option>Helicopter</option></select>
           </div>
           <div class="form-group full"><label class="form-label">Service Package</label>
-            <select class="form-select"><option>Aircraft Basic Detail ($400-$600)</option><option>Jet Full Detail ($800-$1,500)</option></select>
+            <select class="form-select" name="service"><option>Aircraft Basic Detail ($400-$600)</option><option>Jet Full Detail ($800-$1,500)</option></select>
           </div>
-          <div class="form-group"><label class="form-label">Hangar / FBO Location</label><input class="form-input" type="text" placeholder="Airport and hangar info"/></div>
-          <div class="form-group"><label class="form-label">Preferred Date</label><input class="form-input" type="date"/></div>
-          <div class="form-group full"><label class="form-label">Additional Notes</label><textarea class="form-textarea" placeholder="Tail number, special access instructions, specific areas of concern…"></textarea></div>
+          <div class="form-group"><label class="form-label">Hangar / FBO Location</label><input class="form-input" type="text" name="location" placeholder="Airport and hangar info"/></div>
+          <div class="form-group"><label class="form-label">Preferred Date</label><input class="form-input" type="date" name="preferred_date"/></div>
+          <div class="form-group full"><label class="form-label">Additional Notes</label><textarea class="form-textarea" name="notes" placeholder="Tail number, special access instructions, specific areas of concern…"></textarea></div>
           <div class="form-group full">
             <label class="form-label">Upload Photos of Your Vehicle <span style="color:var(--muted);font-weight:400;">(Optional)</span></label>
             <input class="form-input" type="file" name="attachment" accept="image/*,video/mp4" multiple style="padding:.55rem 1rem;cursor:pointer;"/>
@@ -264,19 +264,19 @@
         <div class="form-error">Something went wrong. Please call us at (843) 640-7527.</div>
         <h3>Schedule Your ATV Detail</h3>
         <div class="form-grid">
-          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="First name" required/></div>
-          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Last name" required/></div>
-          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="your@email.com" required/></div>
-          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(843) 000-0000" required/></div>
-          <div class="form-group"><label class="form-label">ATV Make/Model</label><input class="form-input" type="text" placeholder="e.g. Polaris RZR 1000"/></div>
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" name="fname" placeholder="First name" required/></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" name="lname" placeholder="Last name" required/></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" name="email" placeholder="your@email.com" required/></div>
+          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" name="phone" placeholder="(843) 000-0000" required/></div>
+          <div class="form-group"><label class="form-label">ATV Make/Model</label><input class="form-input" type="text" name="vehicle" placeholder="e.g. Polaris RZR 1000"/></div>
           <div class="form-group"><label class="form-label">Vehicle Type</label>
-            <select class="form-select"><option>ATV</option><option>Side-by-Side / UTV</option><option>RZR</option><option>Other Off-Road</option></select>
+            <select class="form-select" name="vehicle_type"><option>ATV</option><option>Side-by-Side / UTV</option><option>RZR</option><option>Other Off-Road</option></select>
           </div>
-          <div class="form-group"><label class="form-label">Preferred Date</label><input class="form-input" type="date"/></div>
+          <div class="form-group"><label class="form-label">Preferred Date</label><input class="form-input" type="date" name="preferred_date"/></div>
           <div class="form-group"><label class="form-label">Preferred Time</label>
-            <select class="form-select"><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select>
+            <select class="form-select" name="preferred_time"><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select>
           </div>
-          <div class="form-group full"><label class="form-label">Additional Notes</label><textarea class="form-textarea" placeholder="Current condition, specific areas to focus on…"></textarea></div>
+          <div class="form-group full"><label class="form-label">Additional Notes</label><textarea class="form-textarea" name="notes" placeholder="Current condition, specific areas to focus on…"></textarea></div>
           <div class="form-group full">
             <label class="form-label">Upload Photos of Your Vehicle <span style="color:var(--muted);font-weight:400;">(Optional)</span></label>
             <input class="form-input" type="file" name="attachment" accept="image/*,video/mp4" multiple style="padding:.55rem 1rem;cursor:pointer;"/>
@@ -301,19 +301,19 @@
         <div class="form-error">Something went wrong. Please call us at (843) 640-7527.</div>
         <h3>Schedule Your Motorcycle Detail</h3>
         <div class="form-grid">
-          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="First name" required/></div>
-          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Last name" required/></div>
-          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="your@email.com" required/></div>
-          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(843) 000-0000" required/></div>
-          <div class="form-group"><label class="form-label">Motorcycle Make/Model</label><input class="form-input" type="text" placeholder="e.g. Harley-Davidson Road King"/></div>
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" name="fname" placeholder="First name" required/></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" name="lname" placeholder="Last name" required/></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" name="email" placeholder="your@email.com" required/></div>
+          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" name="phone" placeholder="(843) 000-0000" required/></div>
+          <div class="form-group"><label class="form-label">Motorcycle Make/Model</label><input class="form-input" type="text" name="vehicle" placeholder="e.g. Harley-Davidson Road King"/></div>
           <div class="form-group"><label class="form-label">Motorcycle Style</label>
-            <select class="form-select"><option>Cruiser</option><option>Sport Bike</option><option>Touring</option><option>Adventure</option><option>Chopper</option><option>Other</option></select>
+            <select class="form-select" name="vehicle_style"><option>Cruiser</option><option>Sport Bike</option><option>Touring</option><option>Adventure</option><option>Chopper</option><option>Other</option></select>
           </div>
-          <div class="form-group"><label class="form-label">Preferred Date</label><input class="form-input" type="date"/></div>
+          <div class="form-group"><label class="form-label">Preferred Date</label><input class="form-input" type="date" name="preferred_date"/></div>
           <div class="form-group"><label class="form-label">Preferred Time</label>
-            <select class="form-select"><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select>
+            <select class="form-select" name="preferred_time"><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select>
           </div>
-          <div class="form-group full"><label class="form-label">Additional Notes</label><textarea class="form-textarea" placeholder="Any special areas of focus or custom parts to be careful with…"></textarea></div>
+          <div class="form-group full"><label class="form-label">Additional Notes</label><textarea class="form-textarea" name="notes" placeholder="Any special areas of focus or custom parts to be careful with…"></textarea></div>
           <div class="form-group full">
             <label class="form-label">Upload Photos of Your Vehicle <span style="color:var(--muted);font-weight:400;">(Optional)</span></label>
             <input class="form-input" type="file" name="attachment" accept="image/*,video/mp4" multiple style="padding:.55rem 1rem;cursor:pointer;"/>
@@ -338,19 +338,19 @@
         <div class="form-error">Something went wrong. Please call us at (843) 640-7527.</div>
         <h3>Schedule Your Golf Cart Detail</h3>
         <div class="form-grid">
-          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="First name" required/></div>
-          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Last name" required/></div>
-          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="your@email.com" required/></div>
-          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(843) 000-0000" required/></div>
-          <div class="form-group"><label class="form-label">Cart Make/Model</label><input class="form-input" type="text" placeholder="e.g. Club Car Onward"/></div>
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" name="fname" placeholder="First name" required/></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" name="lname" placeholder="Last name" required/></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" name="email" placeholder="your@email.com" required/></div>
+          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" name="phone" placeholder="(843) 000-0000" required/></div>
+          <div class="form-group"><label class="form-label">Cart Make/Model</label><input class="form-input" type="text" name="vehicle" placeholder="e.g. Club Car Onward"/></div>
           <div class="form-group"><label class="form-label">Cart Type</label>
-            <select class="form-select"><option>Electric</option><option>Gas</option><option>Custom Build</option><option>LSV</option></select>
+            <select class="form-select" name="vehicle_type"><option>Electric</option><option>Gas</option><option>Custom Build</option><option>LSV</option></select>
           </div>
-          <div class="form-group"><label class="form-label">Preferred Date</label><input class="form-input" type="date"/></div>
+          <div class="form-group"><label class="form-label">Preferred Date</label><input class="form-input" type="date" name="preferred_date"/></div>
           <div class="form-group"><label class="form-label">Preferred Time</label>
-            <select class="form-select"><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select>
+            <select class="form-select" name="preferred_time"><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select>
           </div>
-          <div class="form-group full"><label class="form-label">Additional Notes</label><textarea class="form-textarea" placeholder="Custom accessories, specific areas of focus…"></textarea></div>
+          <div class="form-group full"><label class="form-label">Additional Notes</label><textarea class="form-textarea" name="notes" placeholder="Custom accessories, specific areas of focus…"></textarea></div>
           <div class="form-group full">
             <label class="form-label">Upload Photos of Your Vehicle <span style="color:var(--muted);font-weight:400;">(Optional)</span></label>
             <input class="form-input" type="file" name="attachment" accept="image/*,video/mp4" multiple style="padding:.55rem 1rem;cursor:pointer;"/>
@@ -381,7 +381,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <img src="images/logo.jpg" alt="MotorsLuxe Pro" class="footer-logo-img" onerror="this.style.display='none'"/>
+        <img src="images/logo.svg" alt="MotorsLuxe Pro" class="footer-logo-img" onerror="this.style.display='none'"/>
         <div class="footer-brand-name">MotorsLuxe Pro</div>
         <p class="footer-tagline">Premium detailing for premium vehicles. Est. 2025.</p>
         <div class="social-row">

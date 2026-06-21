@@ -54,7 +54,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 });
 
 /* ── ICS Calendar Generator ── */
-function buildICS(name, dateStr, timeStr, service) {
+function buildICS(name, phone, email, dateStr, timeStr, service, vehicle) {
   function pad(n) { return String(n).padStart(2, '0'); }
 
   const timeMap = {
@@ -72,11 +72,22 @@ function buildICS(name, dateStr, timeStr, service) {
   } else {
     const now = new Date();
     const y = now.getFullYear();
-    const m = pad(now.getMonth() + 1);
-    const d = pad(now.getDate());
-    dtStart = `${y}${m}${d}T090000`;
-    dtEnd   = `${y}${m}${d}T110000`;
+    const m2 = pad(now.getMonth() + 1);
+    const d2 = pad(now.getDate());
+    dtStart = `${y}${m2}${d2}T090000`;
+    dtEnd   = `${y}${m2}${d2}T110000`;
   }
+
+  const desc = [
+    `Client: ${name}`,
+    phone  ? `Phone: ${phone}` : '',
+    email  ? `Email: ${email}` : '',
+    vehicle ? `Vehicle: ${vehicle}` : '',
+    service ? `Service: ${service}` : '',
+    'MotorsLuxe Pro — Premium Detailing',
+    'Lowcountry\\, SC',
+    '(843) 640-7527'
+  ].filter(Boolean).join('\\n');
 
   const ics = [
     'BEGIN:VCALENDAR',
@@ -85,17 +96,51 @@ function buildICS(name, dateStr, timeStr, service) {
     'BEGIN:VEVENT',
     `DTSTART:${dtStart}`,
     `DTEND:${dtEnd}`,
-    `SUMMARY:MotorsLuxe Pro — ${service || 'Detail Appointment'}`,
-    `DESCRIPTION:Appointment for ${name}\\nMotorsLuxe Pro — Premium Detailing\\nLowcountry\\, SC\\n(843) 640-7527`,
+    `SUMMARY:MotorsLuxe Pro — ${name || 'Detail Appointment'}`,
+    `DESCRIPTION:${desc}`,
     'LOCATION:Lowcountry\\, SC',
     'ORGANIZER;CN=MotorsLuxe Pro:mailto:motorsluxe@outlook.com',
+    email ? `ATTENDEE;CN=${name}:mailto:${email}` : '',
     'STATUS:TENTATIVE',
     'END:VEVENT',
     'END:VCALENDAR'
-  ].join('\r\n');
+  ].filter(Boolean).join('\r\n');
 
   const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
   return URL.createObjectURL(blob);
+}
+
+/* Build Outlook Web calendar deep link */
+function buildOutlookUrl(name, phone, email, dateStr, timeStr, service, vehicle) {
+  const timeMap = {
+    '8:00 AM': '08:00', '9:00 AM': '09:00', '10:00 AM': '10:00', '11:00 AM': '11:00',
+    '12:00 PM': '12:00', '1:00 PM': '13:00', '2:00 PM': '14:00', '3:00 PM': '15:00',
+    '4:00 PM': '16:00'
+  };
+  const t = timeMap[timeStr] || '09:00';
+  const [th, tm] = t.split(':');
+  const endH = String(parseInt(th) + 2).padStart(2, '0');
+
+  const body = [
+    `Client: ${name}`,
+    phone   ? `Phone: ${phone}` : '',
+    email   ? `Email: ${email}` : '',
+    vehicle ? `Vehicle: ${vehicle}` : '',
+    service ? `Service: ${service}` : '',
+    '',
+    'MotorsLuxe Pro — Premium Detailing',
+    'Lowcountry, SC  |  (843) 640-7527'
+  ].filter(s => s !== null && s !== undefined).join('%0A');
+
+  const subject = encodeURIComponent(`MotorsLuxe Pro — ${name || 'Detail Appointment'}`);
+  const location = encodeURIComponent('Lowcountry, SC');
+
+  if (dateStr) {
+    const startdt = encodeURIComponent(`${dateStr}T${t}:00`);
+    const enddt   = encodeURIComponent(`${dateStr}T${endH}:${tm}:00`);
+    return `https://outlook.office.com/calendar/action/compose?subject=${subject}&startdt=${startdt}&enddt=${enddt}&location=${location}&body=${body}`;
+  }
+  return `https://outlook.office.com/calendar/action/compose?subject=${subject}&location=${location}&body=${body}`;
 }
 
 /* ── Web3Forms Submission ── */
@@ -105,15 +150,16 @@ async function submitForm(form) {
   btn.textContent = 'Sending…';
   btn.disabled = true;
 
-  // Capture values before clearing
-  const fd    = new FormData(form);
-  const name  = (fd.get('fname') || '') + ' ' + (fd.get('lname') || '');
-  const dateEl    = form.querySelector('[type="date"]');
-  const timeEl    = form.querySelector('select[id$="-time"], select:not([id*="vehicle"]):not([id*="type"]):not([id*="service"]):not([id*="position"])');
-  const serviceEl = form.querySelector('select[id$="-service"]') || form.querySelector('select[id*="service"]');
-  const dateStr   = dateEl ? dateEl.value : '';
-  const timeStr   = timeEl ? timeEl.value : '9:00 AM';
-  const service   = serviceEl ? serviceEl.value : '';
+  const fd      = new FormData(form);
+  const fname   = fd.get('fname') || '';
+  const lname   = fd.get('lname') || '';
+  const name    = (fname + ' ' + lname).trim();
+  const phone   = fd.get('phone') || '';
+  const email   = fd.get('email') || '';
+  const vehicle = fd.get('vehicle') || '';
+  const service = fd.get('service') || '';
+  const dateStr = fd.get('preferred_date') || (form.querySelector('[type="date"]') ? form.querySelector('[type="date"]').value : '');
+  const timeStr = fd.get('preferred_time') || '9:00 AM';
 
   try {
     const res = await fetch('https://api.web3forms.com/submit', {
@@ -123,7 +169,8 @@ async function submitForm(form) {
     const data = await res.json();
 
     if (data.success) {
-      const icsUrl  = buildICS(name.trim(), dateStr, timeStr, service);
+      const icsUrl     = buildICS(name, phone, email, dateStr, timeStr, service, vehicle);
+      const outlookUrl = buildOutlookUrl(name, phone, email, dateStr, timeStr, service, vehicle);
       const dateDisplay = dateStr
         ? new Date(dateStr + 'T12:00:00').toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' })
         : 'TBD — we will confirm within 24 hours';
@@ -132,12 +179,17 @@ async function submitForm(form) {
         <div class="form-success">
           <div class="form-success-icon">✓</div>
           <h3>Request Received!</h3>
-          <p>Thank you${name.trim() ? ', <strong>' + name.trim() + '</strong>' : ''} — your appointment request has been sent to <strong>MotorsLuxe Pro</strong>.</p>
+          <p>Thank you${name ? ', <strong>' + name + '</strong>' : ''} — your appointment request has been sent to <strong>MotorsLuxe Pro</strong>.</p>
           <p>Requested date: <strong>${dateDisplay}</strong></p>
           <p>We'll confirm within <strong>24 hours</strong>. For immediate help call <a href="tel:+18436407527">(843) 640-7527</a></p>
-          ${dateStr ? `<a href="${icsUrl}" download="motorsluxepro-appointment.ics" class="btn-gold" style="margin-top:1.5rem;display:inline-flex;">
-            📅 Add to Outlook / Apple Calendar
-          </a>` : ''}
+          <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem;">
+            ${dateStr ? `<a href="${outlookUrl}" target="_blank" rel="noopener" class="btn-gold" style="display:inline-flex;gap:.5rem;align-items:center;">
+              📅 Add to Microsoft Outlook
+            </a>` : ''}
+            ${dateStr ? `<a href="${icsUrl}" download="motorsluxepro-appointment.ics" class="btn-ghost" style="display:inline-flex;gap:.5rem;align-items:center;">
+              📅 Download for Apple Calendar
+            </a>` : ''}
+          </div>
         </div>`;
     } else {
       throw new Error(data.message || 'Submission failed');
